@@ -5,10 +5,14 @@ import { NoteView, NothingSelectedView } from '../views'
 import { AddOutlined } from '@mui/icons-material'
 import { useDispatch } from 'react-redux'
 import { logoutFirebase } from '../../firebase/providers'
+import { startNewNote } from '../../store/journal/thunks'
 
 export const JopurnalPage = () => {
 
-  
+  const dispach = useDispatch();
+  const onNewNote = () => {
+    dispach(startNewNote());
+  }
 
   return (
     <>
@@ -25,7 +29,7 @@ export const JopurnalPage = () => {
             right:50,
             bottom:50,
           }}
-          
+          onClick={ onNewNote }
         >
           <AddOutlined  sx={{ fontSize: 30}}/>
         </IconButton>
