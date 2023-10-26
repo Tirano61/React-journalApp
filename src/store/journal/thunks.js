@@ -25,8 +25,8 @@ export const startNewNote = () => {
 		await setDoc(newDoc, newNote);
 		
 		newNote.id = newDoc.id;
-		dispach(addNewEmptyNote( newNote ));
 		dispach(setActiveNote( newNote ));
+		dispach(addNewEmptyNote( newNote ));
 
 	}
 }
@@ -37,7 +37,7 @@ export const startLoadingNotes = () => {
 
 		const notes = await loadNotes( uid );
 
-		dispach( setNotes( {notes} ) )
+		dispach( setNotes( notes ) )
 
 	}
 }

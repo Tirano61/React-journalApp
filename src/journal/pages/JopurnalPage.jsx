@@ -4,7 +4,7 @@ import { JournalLayout } from '../layout/JournalLayout'
 import { NoteView, NothingSelectedView } from '../views'
 import { AddOutlined } from '@mui/icons-material'
 import { useDispatch, useSelector } from 'react-redux'
-import { logoutFirebase } from '../../firebase/providers'
+
 import { startNewNote } from '../../store/journal/thunks'
 
 export const JopurnalPage = () => {
@@ -23,7 +23,7 @@ export const JopurnalPage = () => {
         {/* <Typography>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti, earum ducimus! Nam doloremque optio natus eum voluptates sint fugit voluptate saepe temporibus hic! Sit reiciendis in quae, necessitatibus eius distinctio?</Typography> */}
         
         {
-          active !== null 
+          !!active
           ?
           <NoteView />
           :
