@@ -3,14 +3,17 @@ import { IconButton, Typography } from '@mui/material'
 import { JournalLayout } from '../layout/JournalLayout'
 import { NoteView, NothingSelectedView } from '../views'
 import { AddOutlined } from '@mui/icons-material'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { logoutFirebase } from '../../firebase/providers'
 import { startNewNote } from '../../store/journal/thunks'
 
 export const JopurnalPage = () => {
 
+
+  const { isSaving, active } = useSelector( state => state.journal );
   const dispach = useDispatch();
   const onNewNote = () => {
+
     dispach(startNewNote());
   }
 
@@ -18,9 +21,16 @@ export const JopurnalPage = () => {
     <>
       <JournalLayout>
         {/* <Typography>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti, earum ducimus! Nam doloremque optio natus eum voluptates sint fugit voluptate saepe temporibus hic! Sit reiciendis in quae, necessitatibus eius distinctio?</Typography> */}
-        <NothingSelectedView />
-        {/* <NoteView /> */}
+        
+        {
+          active !== null 
+          ?
+          <NoteView />
+          :
+          <NothingSelectedView />
+        }
         <IconButton
+          disabled={ isSaving }
           size='large'
           sx={{color:'white',
             backgroundColor: 'error.main',

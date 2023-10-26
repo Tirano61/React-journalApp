@@ -4,8 +4,11 @@ import { SaveAltOutlined, SaveOutlined } from '@mui/icons-material'
 import { Button, Grid, TextField, Typography } from '@mui/material'
 import React from 'react'
 import { ImageGallery } from '../components'
+import { useSelector } from 'react-redux'
 
 export const NoteView = () => {
+
+
   return (
     <Grid 
       className="animate__animated animate__fadeIn"  
@@ -27,6 +30,7 @@ export const NoteView = () => {
           placeholder='Ingrese un título'
           label='Título'
           sx={{ border:'none', mb:1 }}
+         
         />
         <TextField 
           type='text'
@@ -35,6 +39,7 @@ export const NoteView = () => {
           multiline
           placeholder='¿Que sucedió hoy?'
           minRows={5}
+          
         />
       </Grid>
 
