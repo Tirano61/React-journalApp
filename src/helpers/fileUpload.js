@@ -3,7 +3,8 @@
 
 export const fileUpload = async( file ) => {
 
-  if( !file ) throw new Error( 'No hay archivo para enviar' );
+  //if( !file ) throw new Error( 'No hay archivo para enviar' );
+  if( !file ) return null;
 
   const cloudURL = 'https://api.cloudinary.com/v1_1/cursoreactjs/upload';
   
@@ -25,6 +26,7 @@ export const fileUpload = async( file ) => {
     return cloudResp.secure_url; 
 
   } catch (error) {
-    throw new Error(error.message);
+    return null;
+    //throw new Error(error.message);
   }
 }
