@@ -24,20 +24,20 @@ export const startGoogleSignIn = () =>{
 export const startCreatingUserWithEmailPassword = ({ email, password, displayName }) =>{
   return async ( dispach ) => {
     dispach( checkingCredentials() );
-    const { ok, uid, photoURL, errorMessage } = await registerUserWihthEmailPassword({ email, password, displayName});
+    const result = await registerUserWihthEmailPassword({ email, password, displayName});
     
-    if(!ok) return dispach( logout({ errorMessage }));
-    dispach( login({ uid, email, photoURL, displayName }));
+    if(!result.ok) return dispach( logout({ errorMessage }));
+    dispach( login( result ));
   }
 }
 
 export const startLoginWithEmail = ({ email, password }) =>{
   return async (dispach) =>{
     dispach( checkingCredentials() );
-    const { ok, uid, photoURL, displayName, errorMessage } = await loginWithEmailPassword({ email, password });
+    const result= await loginWithEmailPassword({ email, password });
     
-    if (!ok) return dispach( logout({ errorMessage }));
-    dispach( login({ uid, email, displayName, photoURL }));
+    if (!result.ok) return dispach( logout({ errorMessage }));
+    dispach( login( result ));
   }
 }
 
