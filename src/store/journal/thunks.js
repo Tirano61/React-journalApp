@@ -8,7 +8,7 @@ import { fileUpload } from "../../helpers/fileUpload";
 
 
 
-export const startNewNote = () => { 
+export const  startNewNote = () => { 
 	return async (dispach, getSate) => {
 
 		dispach( savingNewNote())
@@ -16,7 +16,7 @@ export const startNewNote = () => {
 		const { uid } = getSate().auth;
 		
 		const newNote = {
-			title: 'Titulo',
+			title: '',
 			body: '',
 			date: new Date().getTime(),
 			imageUrls: [],
@@ -42,6 +42,7 @@ export const startLoadingNotes = () => {
 		dispach( setNotes( notes ));
 	}
 }
+
 export const startSavingNote = () => {
 	return async( dispach, getState ) => {
 		
