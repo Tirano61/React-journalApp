@@ -4,11 +4,7 @@ import { addNewEmptyNote, deleteNoteById, savingNewNote, setActiveNote, setFotos
 import { loadNotes } from "../../helpers/loadNotes";
 import { fileUpload } from "../../helpers/fileUpload";
 
-
-
-
-
-export const  startNewNote = () => { 
+export const startNewNote = () => { 
 	return async (dispach, getSate) => {
 
 		dispach( savingNewNote())
